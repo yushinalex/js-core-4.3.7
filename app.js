@@ -74,7 +74,6 @@ async function searchRep(value) {
             );
         }
         const res = await response.json();
-        console.log(res.items);
 
         return Promise.resolve(res.items);
     } catch (err) {
@@ -100,9 +99,11 @@ function repoSearch(e) {
 }
 
 function removeChosen(e) {
-    let target = e.target;
-    let el = target.parentElement;
-    el.remove();
+    if (e.target.tagName === 'BTN') {
+        let target = e.target;
+        let el = target.parentElement;
+        el.remove();
+    }
 }
 
 input.addEventListener('keyup', repoSearch);
